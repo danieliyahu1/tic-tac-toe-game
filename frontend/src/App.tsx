@@ -24,8 +24,9 @@ const App = () => {
     "button-8": '8',
     "button-9": '9'
 };
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
-  const socket = useRef(io('http://localhost:7000')).current;
+  const socket = useRef(io(API_BASE_URL)).current;
   const inputNameRef = useRef<HTMLInputElement>(null);
 
   const handleSearchClick = () => {

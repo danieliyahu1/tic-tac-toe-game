@@ -15,7 +15,7 @@ app.use(cors({ origin: "http://localhost:3000" }));
 const server = http.createServer(app);
 const io = new socketServer(server, {
     cors: {
-      origin: "http://localhost:5173",  // Frontend URL
+      origin: process.env.FRONTEND_URL,  // Frontend URL
       methods: ["GET", "POST"]
     }
   });
@@ -96,10 +96,6 @@ io.on("connection", (socket)=>{
 
 const foundObject = (name:string): Players | undefined => {
      return playingArray.find(obj => obj.p1.name == name || obj.p2.name == name);
-}
-
-const createRandomRoom = () => {
-
 }
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
